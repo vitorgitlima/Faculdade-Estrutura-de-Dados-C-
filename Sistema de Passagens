@@ -1,0 +1,107 @@
+#include <stdio.h>
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+
+using namespace std;
+
+void imprimir(int b[12][4]){
+	int c=0,l=0,poltrona=0;
+	 for (l=0;l<12;l++)
+                 {
+                     for (c=0;c<4;c++)
+                     {
+                       poltrona++;  
+                        if (b[l][c]==0)
+                         {
+                              cout<<poltrona<<"[x] ";
+                              }
+                              else
+                              {
+                                  cout<<poltrona<<"[ ] ";//<<a[l][c]);
+                                  }
+                              }
+                              printf("\n");
+                              }
+}
+
+
+int main()
+{
+     int a[12][4], l, c, menu, soma, qtd, lugar, t, qa;
+     qtd = 0;
+     int poltrona=0;
+     soma = 0;
+     qa = 0;
+     menu = 0;
+     t = 0;
+     for (l=0;l<12;l++)
+     {
+        for (c=0;c<4;c++)
+        {
+            qtd++;
+            a[l][c] = qtd;
+            }
+            }
+      
+	 bool termina=false;
+    
+     while(!termina)
+     {
+     printf("\n**********menu***********");
+     printf("\n*1-Vendidas             *");
+     printf("\n*2-vender passagem      *");
+     printf("\n*3-sair                 *");
+     printf("\n*************************");
+     printf("\nopcao: ");
+     scanf("%d", &menu);
+     system("cls");
+     switch (menu)
+     {
+            case 1:
+            	cout<<"Passagens Vendidas:"<<endl;
+            imprimir(a);
+            	
+            break;
+            case 2:
+            	imprimir(a);
+                 cout<<"Digite Um Lugar:";
+                 cin>>lugar;
+                 if (lugar>=1 && lugar<=48)
+                 {
+                 soma++;
+                 qa++;
+                 for (l=0;l<12;l++)
+                 {
+                     for(c=0;c<4;c++)
+                     {
+                          if (a[l][c]==lugar)
+                          {
+                              a[l][c]=0;
+                              }
+                              }
+                              }
+                              system("cls");
+                              cout<<"Passagem Comprado com Sucesso!"<<endl;
+                              	imprimir(a);
+                              	Sleep(3000);
+                              	system("cls");
+                              }
+                 else
+                 {
+                     printf("Escolha um Lugar!");
+                     }
+             break;
+             case 3:
+             	termina=true;
+            break;
+             default :
+                     printf("\ndigite uma opcao valida\n");
+             break;
+             }
+             }
+             
+             
+     return 0;        
+    }
